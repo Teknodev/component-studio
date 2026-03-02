@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-overlay-backdrop;
+  background: rgba($color-black, 0.1);
+}
+
+.panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-overlay-panel;
+  @include flex-col;
+  height: 100%;
+  width: 320px;
+  border-left: 1px solid $color-slate-200;
+  background: $color-white;
+  box-shadow: $shadow-xl;
+  transform: translateX(100%);
+  transition: transform $transition-slow;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.header {
+  @include flex-between;
+  padding: $space-3 $space-4;
+  border-bottom: 1px solid $color-slate-200;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-slate-900;
+}
+
+.closeBtn {
+  padding: $space-1;
+  border-radius: $radius-lg;
+  color: $color-slate-400;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $color-slate-100;
+    color: $color-slate-600;
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-4;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.divider {
+  border-top: 1px solid $color-slate-100;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  border-top: 1px solid $color-slate-200;
+  flex-shrink: 0;
+}

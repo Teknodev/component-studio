@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  width: 100%;
+  padding: $space-1 $space-2;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-slate-600;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-slate-100;
+  }
+}
+
+.selected {
+  background: $color-indigo-50;
+  color: $color-indigo-700;
+}
+
+.component {
+  cursor: pointer;
+  font-weight: $font-weight-medium;
+  color: $color-slate-700;
+
+  &:hover {
+    background: $color-indigo-50;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  color: $color-slate-400;
+  transition: transform $transition-fast;
+  flex-shrink: 0;
+}
+
+.arrowExpanded {
+  transform: rotate(90deg);
+}
+
+.fileIcon {
+  flex-shrink: 0;
+  color: $color-slate-400;
+}
+
+.folderOpen {
+  color: $color-indigo-500;
+  flex-shrink: 0;
+}
+
+.folderClosed {
+  color: $color-slate-400;
+  flex-shrink: 0;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folderName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: $font-weight-medium;
+  color: $color-slate-700;
+}

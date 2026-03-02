@@ -1,0 +1,48 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-slate-500;
+  margin-bottom: $space-1;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  border: 1px solid $color-slate-200;
+  border-radius: $radius-lg;
+  background: $color-white;
+  padding: 6px;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-slate-300;
+  }
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.text {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: $font-size-xs;
+  color: $color-slate-600;
+  outline: none;
+}

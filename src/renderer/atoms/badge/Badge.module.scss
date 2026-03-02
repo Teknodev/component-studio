@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: 1.4;
+}
+
+.success {
+  background: $color-emerald-50;
+  color: $color-emerald-700;
+}
+
+.warning {
+  background: $color-amber-50;
+  color: $color-amber-700;
+}
+
+.danger {
+  background: $color-red-50;
+  color: $color-red-700;
+}
+
+.neutral {
+  background: $color-slate-100;
+  color: $color-slate-600;
+}

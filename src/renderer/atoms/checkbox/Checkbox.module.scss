@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input {
+  accent-color: $color-indigo-600;
+  width: 14px;
+  height: 14px;
+  cursor: inherit;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $color-slate-500;
+}

@@ -1,0 +1,8 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+.loadingScreen {
+  @include flex-center;
+  height: 100vh;
+  background: $color-slate-50;
+}

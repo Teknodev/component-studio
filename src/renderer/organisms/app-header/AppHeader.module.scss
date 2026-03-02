@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  @include flex-between;
+  padding: $space-3 $space-6;
+  border-bottom: 1px solid $color-slate-200;
+  background: $color-white;
+  flex-shrink: 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-lg;
+  background: $color-indigo-600;
+  color: $color-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+}

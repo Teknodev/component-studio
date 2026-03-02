@@ -1,0 +1,212 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.panel {
+  @include flex-col;
+  height: 100%;
+  background: $color-white;
+}
+
+.header {
+  @include flex-between;
+  padding: $space-3 $space-4;
+  border-bottom: 1px solid $color-slate-100;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-slate-900;
+}
+
+.config {
+  display: flex;
+  gap: $space-3;
+  padding: $space-4;
+  border-bottom: 1px solid $color-slate-100;
+  flex-shrink: 0;
+}
+
+.field {
+  flex: 1;
+}
+
+.label {
+  @include field-label;
+}
+
+.input {
+  @include input-base;
+  padding: $space-2 $space-3;
+  font-size: $font-size-sm;
+}
+
+.listHeader {
+  @include flex-between;
+  padding: $space-2 $space-4;
+  border-bottom: 1px solid $color-slate-100;
+  flex-shrink: 0;
+}
+
+.selectAll {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: $font-family-base;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.selectAllLabel {
+  font-size: $font-size-sm;
+  color: $color-slate-600;
+}
+
+.count {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: $radius-sm;
+  border: 2px solid $color-slate-300;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+
+  &.checked {
+    background: $color-indigo-600;
+    border-color: $color-indigo-600;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 7px;
+      border: solid $color-white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) translateY(-1px);
+    }
+  }
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-1 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-2 $space-4;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: $font-family-base;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-slate-50;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.itemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-slate-800;
+}
+
+.itemPath {
+  @include truncate;
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+  margin-top: 1px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  padding: 2px $space-2;
+  border-radius: $radius-full;
+
+  &.building,
+  &.uploading {
+    color: $color-indigo-600;
+    background: $color-indigo-50;
+
+    svg {
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  &.success {
+    color: $color-emerald-700;
+    background: $color-emerald-50;
+  }
+
+  &.error {
+    color: $color-red-700;
+    background: $color-red-50;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.summary {
+  display: flex;
+  gap: $space-3;
+  padding: $space-2 $space-4;
+  border-top: 1px solid $color-slate-100;
+  flex-shrink: 0;
+}
+
+.successText {
+  font-size: $font-size-xs;
+  color: $color-emerald-700;
+}
+
+.errorText {
+  font-size: $font-size-xs;
+  color: $color-red-700;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  border-top: 1px solid $color-slate-100;
+  flex-shrink: 0;
+}

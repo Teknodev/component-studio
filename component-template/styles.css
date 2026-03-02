@@ -1,0 +1,47 @@
+.my-component {
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: var(--theme-font-family, "Inter, sans-serif");
+  background: var(--theme-background, #ffffff);
+  color: var(--theme-font-color-primary, #1e293b);
+}
+
+.my-component__content {
+  max-width: var(--theme-content-width, 1200px);
+  margin: 0 auto;
+}
+
+.my-component__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--theme-font-color-primary, #1e293b);
+}
+
+.my-component__description {
+  font-size: 1.125rem;
+  color: var(--theme-font-color-secondary, #64748b);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-component__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--theme-primary, #4f46e5);
+  border: none;
+  border-radius: var(--theme-border-radius, 8px);
+  box-shadow: var(--theme-box-shadow, 0 2px 8px 0 rgba(0, 0, 0, 0.1));
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.my-component__button:hover {
+  opacity: 0.9;
+}

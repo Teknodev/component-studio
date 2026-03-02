@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-1 0;
+}
+
+.heading {
+  @include section-label;
+  padding: 0 $space-3;
+  margin-bottom: $space-1;
+}
+
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  padding: $space-8 0;
+}
+
+.emptyIcon {
+  color: $color-slate-300;
+  margin-bottom: $space-2;
+}
+
+.emptyTitle {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}
+
+.emptyHint {
+  font-size: $font-size-xs;
+  color: $color-slate-300;
+  margin-top: $space-1;
+}

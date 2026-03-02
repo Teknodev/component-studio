@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-lg;
+  transition: background $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+// Sizes
+.sm {
+  padding: $space-1 $space-3;
+  font-size: $font-size-sm;
+
+  .icon svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.md {
+  padding: $space-2 $space-4;
+  font-size: $font-size-base;
+
+  .icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.lg {
+  padding: $space-3 $space-6;
+  font-size: $font-size-base;
+
+  .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Variants
+.primary {
+  color: $color-white;
+  background: $color-indigo-600;
+  box-shadow: $shadow-indigo;
+
+  &:hover:not(:disabled) {
+    background: $color-indigo-700;
+  }
+}
+
+.secondary {
+  color: $color-slate-600;
+  background: $color-white;
+  border: 1px solid $color-slate-200;
+
+  &:hover:not(:disabled) {
+    background: $color-slate-50;
+  }
+}
+
+.ghost {
+  color: $color-slate-500;
+  background: transparent;
+
+  &:hover:not(:disabled) {
+    background: $color-slate-100;
+    color: $color-slate-700;
+  }
+}
+
+.danger {
+  color: $color-white;
+  background: $color-red-500;
+
+  &:hover:not(:disabled) {
+    background: $color-red-700;
+  }
+}

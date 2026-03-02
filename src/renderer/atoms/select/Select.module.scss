@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @include field-label;
+}
+
+.select {
+  @include input-base;
+  padding: $space-2 $space-3;
+  appearance: auto;
+}

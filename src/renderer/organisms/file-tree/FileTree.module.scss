@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.tree {
+  padding: $space-1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  padding: $space-8 0;
+}
+
+.emptyIcon {
+  color: $color-slate-300;
+  margin-bottom: $space-2;
+}
+
+.emptyText {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}

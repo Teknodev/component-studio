@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  @include full-page;
+  background: $color-slate-50;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+}

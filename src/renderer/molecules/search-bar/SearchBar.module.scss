@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  max-width: 400px;
+}
+
+.icon {
+  position: absolute;
+  left: $space-3;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-slate-400;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: $space-2 $space-4 $space-2 36px;
+  border: 1px solid $color-slate-200;
+  border-radius: $radius-lg;
+  background: $color-slate-50;
+  font-size: $font-size-base;
+  color: $color-slate-900;
+  outline: none;
+  transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: $color-slate-400;
+  }
+
+  &:focus {
+    border-color: $color-indigo-200;
+    background: $color-white;
+    box-shadow: 0 0 0 3px rgba($color-indigo-600, 0.06);
+  }
+}

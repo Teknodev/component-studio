@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  @include flex-between;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-slate-500;
+}
+
+.value {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}
+
+.slider {
+  width: 100%;
+  accent-color: $color-indigo-600;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

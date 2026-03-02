@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include flex-center;
+  height: 100vh;
+  background: linear-gradient(135deg, $color-slate-50, $color-indigo-50);
+}

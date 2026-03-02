@@ -1,0 +1,47 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.divider {
+  color: $color-slate-300;
+}
+
+.componentName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-slate-900;
+}
+
+.componentPath {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}
+
+.previewArea {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.errorState {
+  @include flex-center;
+  flex-direction: column;
+  height: 100%;
+  gap: $space-2;
+}
+
+.errorTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-red-500;
+}
+
+.errorDetail {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+}

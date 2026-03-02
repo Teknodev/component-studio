@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  @include full-page;
+  background: $color-slate-50;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid $color-slate-200;
+  background: $color-white;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+}

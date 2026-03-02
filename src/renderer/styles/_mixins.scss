@@ -1,0 +1,66 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin section-label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $color-slate-400;
+}
+
+@mixin field-label {
+  display: block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-slate-500;
+  margin-bottom: $space-1;
+}
+
+@mixin input-base {
+  width: 100%;
+  border: 1px solid $color-slate-200;
+  border-radius: $radius-lg;
+  background: $color-white;
+  font-size: $font-size-base;
+  color: $color-slate-700;
+  outline: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus {
+    border-color: $color-indigo-200;
+    box-shadow: 0 0 0 3px rgba($color-indigo-600, 0.08);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin full-page {
+  height: 100vh;
+  @include flex-col;
+}

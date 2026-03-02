@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @include field-label;
+}
+
+.input {
+  @include input-base;
+  padding: $space-2 $space-3;
+}
+
+.hasError {
+  border-color: $color-red-500;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($color-red-500, 0.08);
+  }
+}
+
+.error {
+  font-size: $font-size-xs;
+  color: $color-red-500;
+  margin-top: $space-1;
+}

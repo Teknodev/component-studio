@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: $radius-lg;
+  background: $color-slate-100;
+}
+
+.option {
+  padding: 6px $space-3;
+  border-radius: $radius-md;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-slate-500;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-slate-700;
+  }
+}
+
+.active {
+  background: $color-white;
+  color: $color-slate-900;
+  box-shadow: $shadow-sm;
+}
