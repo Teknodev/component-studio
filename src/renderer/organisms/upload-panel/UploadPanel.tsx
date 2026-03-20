@@ -21,7 +21,7 @@ interface Props {
 
 export default function UploadPanel({ components, folderPath, projectId, onClose }: Props) {
   const [selected, setSelected] = useState<Set<string>>(() => new Set())
-  const [version, setVersion] = useState('1.0.0')
+  const [version, setVersion] = useState(1)
   const [category, setCategory] = useState('custom')
   const [uploadStates, setUploadStates] = useState<Record<string, ComponentUploadState>>({})
   const [isProcessing, setIsProcessing] = useState(false)
@@ -99,10 +99,11 @@ export default function UploadPanel({ components, folderPath, projectId, onClose
           <label className={styles.label}>Version</label>
           <input
             className={styles.input}
-            type="text"
+            type="number"
+            min={1}
             value={version}
-            onChange={(e) => setVersion(e.target.value)}
-            placeholder="1.0.0"
+            onChange={(e) => setVersion(Number(e.target.value) || 1)}
+            placeholder="1"
             disabled={isProcessing}
           />
         </div>

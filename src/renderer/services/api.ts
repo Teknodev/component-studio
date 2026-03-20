@@ -60,7 +60,7 @@ class ApiService {
   async uploadComponent(resourceId: string, data: {
     name: string
     category: string
-    version: string
+    version: number
     bundle: string
     styles?: string
     props_schema?: object[]
@@ -86,7 +86,7 @@ export interface CustomComponentMeta {
   _id: string
   name: string
   category: string
-  version: string
+  version: number
   bundle_url: string
   styles_url: string
   props_schema: string
