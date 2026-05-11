@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@blinkpage/component-builder": "file:../component-builder",
     "chokidar": "^4.0.3",
     "electron-store": "^8.2.0",
     "react": "^19.1.0",

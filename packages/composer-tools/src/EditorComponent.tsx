@@ -177,7 +177,7 @@ export type TypeReactComponent = {
   interactions?: Record<string, InteractionType[]>;
   id?: string;
   customComponentId?: string;
-  customComponentVersion?: string;
+  customComponentVersion?: number;
 };
 
 export type TypeUsableComponentProps = {
