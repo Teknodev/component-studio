@@ -3,6 +3,10 @@ import { api } from '../../services/api'
 import type { ComponentEntry } from '../component-list/ComponentList'
 import Button from '../../atoms/button/Button'
 import Icon from '../../atoms/icon/Icon'
+import {
+  findStyleViolationsFromBase64,
+  formatScopeViolationMessage,
+} from '../../utils/css-scope-check'
 import styles from './UploadPanel.module.scss'
 
 type UploadStatus = 'idle' | 'building' | 'uploading' | 'success' | 'error'
@@ -63,6 +67,17 @@ export default function UploadPanel({ components, folderPath, projectId, onClose
           componentDir: folderPath,
           componentRelativePath: comp.relativePath
         })
+
+        // Client-side pre-flight: reject CSS that targets global/tool scope
+        // BEFORE hitting the backend's authoritative 422 gate, so the user gets
+        // an immediate, explanatory message. Mirrors the backend rule set.
+        const scopeViolations = findStyleViolationsFromBase64(buildResult.styles)
+        if (scopeViolations.length > 0) {
+          const message = formatScopeViolationMessage(scopeViolations)
+          console.error(`[UploadPanel] CSS scope pre-flight blocked "${buildResult.name}":`, scopeViolations)
+          updateState(comp.relativePath, { status: 'error', error: message })
+          continue
+        }
 
         updateState(comp.relativePath, { status: 'uploading' })
 
