@@ -37,13 +37,13 @@ class ApiService {
 
   async verifyToken(token: string) {
     return this.request<{ user: { _id: string; email: string; name?: string } }>(
-      '/fn-execute/auth/verify-token',
+      '/fn-execute/v1/auth/verify-token',
       { method: 'POST', body: JSON.stringify({ token }) }
     )
   }
 
   async getProjects() {
-    return this.request<Project[]>('/fn-execute/resource')
+    return this.request<Project[]>('/fn-execute/v1/projects')
   }
 
   async getProject(resourceId: string) {
@@ -51,7 +51,7 @@ class ApiService {
   }
 
   async patchThemeConfig(resourceId: string, themeConfig: Record<string, unknown>) {
-    return this.request<void>(`/fn-execute/resource/${resourceId}/theme-config`, {
+    return this.request<void>(`/fn-execute/v1/projects/${resourceId}/theme-config`, {
       method: 'PATCH',
       body: JSON.stringify({ theme_config: themeConfig })
     })
@@ -65,18 +65,18 @@ class ApiService {
     styles?: string
     props_schema?: object[]
   }) {
-    return this.request<CustomComponentMeta>(`/fn-execute/resource/${resourceId}/upload-component`, {
+    return this.request<CustomComponentMeta>(`/fn-execute/v1/projects/${resourceId}/custom-components`, {
       method: 'POST',
       body: JSON.stringify(data)
     })
   }
 
   async getCustomComponents(resourceId: string) {
-    return this.request<CustomComponentMeta[]>(`/fn-execute/resource/${resourceId}/custom-components`)
+    return this.request<CustomComponentMeta[]>(`/fn-execute/v1/projects/${resourceId}/custom-components`)
   }
 
   async deleteCustomComponent(resourceId: string, componentId: string) {
-    return this.request<void>(`/fn-execute/resource/${resourceId}/custom-component/${componentId}`, {
+    return this.request<void>(`/fn-execute/v1/projects/${resourceId}/custom-components/${componentId}`, {
       method: 'DELETE'
     })
   }
