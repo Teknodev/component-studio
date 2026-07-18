@@ -47,7 +47,7 @@ class ApiService {
   }
 
   async getProject(resourceId: string) {
-    return this.request<Project>(`/fn-execute/resource/${resourceId}`)
+    return this.request<Project>(`/fn-execute/v1/projects/${resourceId}`)
   }
 
   async patchThemeConfig(resourceId: string, themeConfig: Record<string, unknown>) {
