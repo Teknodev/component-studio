@@ -232,88 +232,19 @@ function isGlobalSelector(selector: string): boolean {
 }
 
 /**
- * True when a rule body carries anything other than flat `--name: value`
- * declarations — i.e. something the editor's scoper cannot re-home onto
- * `#playground`. Ignores comments, strings, balanced parens, and counts a
- * natively-nested rule as blocked (the scoper discards it wholesale).
- * Keep in sync with landing-composer's `custom-component-loader.ts`.
- */
-function hasNonCustomDeclarations(inner: string): boolean {
-  let total = 0
-  let custom = 0
-  let buffer = ''
-  let i = 0
-  const flush = () => {
-    const t = buffer.trim()
-    buffer = ''
-    if (!t) return
-    total++
-    if (t.startsWith('--') && t.indexOf(':') > 0) custom++
-  }
-  while (i < inner.length) {
-    const ch = inner[i]
-    if (ch === '/' && inner[i + 1] === '*') {
-      i = scanComment(inner, i)
-      continue
-    }
-    if (ch === '"' || ch === "'") {
-      const stop = scanString(inner, i)
-      buffer += inner.slice(i, stop)
-      i = stop
-      continue
-    }
-    if (ch === '(') {
-      const close = findMatching(inner, i, '(', ')')
-      buffer += inner.slice(i, close + 1)
-      i = close + 1
-      continue
-    }
-    if (ch === '{') {
-      const close = findMatching(inner, i, '{', '}')
-      buffer = ''
-      i = close + 1
-      total++
-      continue
-    }
-    if (ch === ';') {
-      flush()
-      i++
-      continue
-    }
-    buffer += ch
-    i++
-  }
-  flush()
-  return total > custom
-}
-
-/**
- * Record any global-scope selector in a comma-separated selector list.
+ * Global selectors are NO LONGER violations.
  *
- * A global rule holding ONLY custom properties is legal: the editor's scoper
- * re-homes those onto `#playground` rather than dropping them, so the
- * conventional `:root { --token: … }` palette block is accepted. Only
- * declarations the scoper cannot salvage are reported.
+ * The editor's scoper re-points `:root`/`html`/`body`/`*` at `#playground`
+ * instead of dropping them, so a component's palette block, its
+ * `body { background: … }` and `* { box-sizing: … }` base rules all take effect
+ * on the canvas — and still never above it. Warning about them here would block
+ * uploads the runtime renders correctly, and would drift from the backend gate.
+ *
+ * The only remaining violation is a custom property declared outside any
+ * selector, which resolves at document scope (see checkRuleList).
  */
-function checkSelectorList(
-  selectorList: string,
-  violations: GlobalScopeViolation[],
-  inner: string,
-): void {
-  const blocked = hasNonCustomDeclarations(inner)
-  for (const raw of splitTopLevel(selectorList, ',')) {
-    const sel = raw.trim()
-    if (!sel) continue
-    // Already-scoped selectors are fine and pass through untouched.
-    if (sel.startsWith(PLAYGROUND_SCOPE)) continue
-    if (isGlobalSelector(sel) && blocked) {
-      violations.push({
-        selector: sel,
-        reason:
-          'targets global scope (:root/html/body/*) with non-custom-property declarations; those would escape #playground and override the editor tool styles',
-      })
-    }
-  }
+function checkSelectorList(_selectorList: string, _violations: GlobalScopeViolation[]): void {
+  // intentionally empty — retained so checkRule's shape matches the other surfaces
 }
 
 /** Inspect a single `prelude { inner }` rule, collecting violations. */
@@ -334,7 +265,7 @@ function checkRule(prelude: string, inner: string, violations: GlobalScopeViolat
   // Qualified rule. Native-nested rules inside are already confined by their
   // scoped parent, so only the prelude's own selector list is checked — the
   // body is passed along so a token-only global rule can be recognised.
-  checkSelectorList(trimmed, violations, inner)
+  checkSelectorList(trimmed, violations)
 }
 
 /**
