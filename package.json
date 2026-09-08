@@ -4,8 +4,8 @@
   "description": "Desktop application for building and previewing custom components with live hot-reload and theme testing",
   "main": "./out/main/index.js",
   "scripts": {
-    "dev": "electron-vite dev",
-    "build": "electron-vite build",
+    "dev": "node api.js && electron-vite dev",
+    "build": "node api.js && electron-vite build",
     "preview": "electron-vite preview",
     "typecheck": "tsc --noEmit"
   },
